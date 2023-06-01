@@ -1,3 +1,4 @@
+# NOTE:- The below script requires PowerShell to be running as an administrator
 # Script to install Visual Studio extensions across all users (i.e computer-wide configuration)
 
 $VSIXInstallerPath = "$Env:ProgramFiles\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\VSIXInstaller.exe"
