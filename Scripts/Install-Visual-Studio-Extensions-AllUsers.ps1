@@ -1,6 +1,6 @@
 param(
      [Parameter()]
-     [string]$Path
+     [string]$Path = "$Env:TEMP"
  )
 
 # Loop through all files in a directory that has the extension vsix
