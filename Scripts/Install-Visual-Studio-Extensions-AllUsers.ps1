@@ -1,6 +1,6 @@
 param(
      [Parameter()]
-     [string]$VsixFolderPath = "$Env:TEMP",
+     [string]$VsixFolderPath = "$Env:PUBLIC\Downloads",
      [string]$VSIXInstallerPath = "$Env:ProgramFiles\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\VSIXInstaller.exe"
  )
 
