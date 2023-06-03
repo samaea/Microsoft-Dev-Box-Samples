@@ -22,14 +22,17 @@ function Install-VsixFiles {
     )
 
     $vsixFiles = Get-VsixFiles -VsixFolderPath $VsixFolderPath
-
-    foreach ($vsixFile in $vsixFiles.fullname) {
-        Write-Host "Installing $vsixFile"
-        # /a for admin, /q for silent installation and /sp to shutdown all processes that prevent VSIXInstaller from running
-        $Arguments = @( "/a" , "/q", "/sp", $vsixFile)
-        start-process -FilePath $VSIXInstallerPath -ArgumentList $Arguments -Wait
-        
+    
+    if ($vsixFiles.length -eq 0) {
+        Write-Host "ERROR: Could not find any VSIX files at $VsixFolderPath" 
+    }else{   
+         foreach ($vsixFile in $vsixFiles.fullname) {
+             Write-Host "Installing $vsixFile"
+             # /a for admin, /q for silent installation and /sp to shutdown all processes that prevent VSIXInstaller from running
+             $Arguments = @( "/a" , "/q", "/sp", $vsixFile)
+             start-process -FilePath $VSIXInstallerPath -ArgumentList $Arguments -Wait
+         }
     }
 }
-
+Write-Host "INFO: Attempting to locate and install Visual Studio extensions located at $VsixFolderPath"
 Install-VsixFiles -VsixFolderPath $VsixFolderPath
